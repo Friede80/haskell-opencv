@@ -116,7 +116,7 @@ getDictValue
     :: (PrimMonad m, GetDictValue a)
     => DictValue
     -> Maybe Int -- ^ Optional array index.
-    -> CvExceptT m a
+    -> ExceptT CvException m a
 getDictValue dictValue mbIdx = ExceptT $ unsafePrimToPrim $
     withPtr dictValue $ \dictValuePtr ->
       getDictValue' dictValuePtr c'idx

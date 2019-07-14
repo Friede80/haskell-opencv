@@ -92,7 +92,7 @@ netConnectByDescriptor
     => Net (PrimState m)
     -> string -- ^ Descriptor of the first layer output.
     -> string -- ^ Descriptor of the second layer input.
-    -> CvExceptT m ()
+    -> ExceptT CvException m ()
 netConnectByDescriptor net outPin inPin = ExceptT $ unsafePrimToPrim $
     withPtr net    $ \netPtr    ->
     withPtr (toCvString outPin) $ \outPinPtr ->
@@ -115,7 +115,7 @@ netConnectByIdentifier
     -> Int -- ^ Identifier of the second layer.
     -> Int -- ^ Number of the first layer output.
     -> Int -- ^ Number of the second layer input.
-    -> CvExceptT m ()
+    -> ExceptT CvException m ()
 netConnectByIdentifier net outLayerId outNum inpLayerId inpNum =
     ExceptT $ unsafePrimToPrim $
     withPtr net $ \netPtr ->
@@ -159,7 +159,7 @@ netForward
     :: (PrimMonad m, IsCvString string)
     => Net (PrimState m)
     -> Maybe string -- ^ Name for layer which output is needed to get.
-    -> CvExceptT m (Mat 'D 'D 'D)
+    -> ExceptT CvException m (Mat 'D 'D 'D)
 netForward net mbOutputName = ExceptT $ unsafePrimToPrim $ do
     result <- newEmptyMat
     handleCvException (pure $ unsafeCoerceMat result) $

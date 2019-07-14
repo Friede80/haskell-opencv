@@ -50,7 +50,7 @@ readNetFromCaffe
     :: (PrimMonad m)
     => B.ByteString -- ^ Content of the .prototxt file.
     -> B.ByteString -- ^ Content of the .caffemodel file.
-    -> CvExceptT m (Net (PrimState m))
+    -> ExceptT CvException m (Net (PrimState m))
 readNetFromCaffe proto model = ExceptT $ unsafePrimToPrim $ do
     net <- newNet
     handleCvException (pure $ coerceNet net) $
@@ -73,7 +73,7 @@ readNetFromCaffeFile
     :: FilePath -- ^ Path to the .prototxt file with text description of the
                 -- network architecture.
     -> FilePath -- ^ Path to the .caffemodel file with learned network.
-    -> CvExceptT IO (Net (PrimState IO))
+    -> ExceptT CvException IO (Net (PrimState IO))
 readNetFromCaffeFile prototxt caffeModel = ExceptT $ do
     net <- newNet
     handleCvException (pure net) $
