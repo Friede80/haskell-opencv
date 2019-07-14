@@ -124,7 +124,9 @@ library
         OpenCV.Core.Types.Point
         OpenCV.Core.Types.Rect
         OpenCV.Core.Types.Size
+        OpenCV.Core.Types.String
         OpenCV.Core.Types.Vec
+        OpenCV.Dnn
         OpenCV.Exception
         OpenCV.Features2d
         OpenCV.HighGui
@@ -178,6 +180,8 @@ library
         OpenCV.Internal.Core.Types.Size.TH
         OpenCV.Internal.Core.Types.Vec
         OpenCV.Internal.Core.Types.Vec.TH
+        OpenCV.Internal.Dnn.DictValue
+        OpenCV.Internal.Dnn.Net
         OpenCV.Internal.Exception
         OpenCV.Internal.Features2d.Constants
         OpenCV.Internal.ImgCodecs
