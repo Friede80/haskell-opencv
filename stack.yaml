@@ -1,4 +1,4 @@
-resolver: nightly-2018-12-21
+resolver: 13.28
 packages:
 - opencv/
 - opencv-examples/
